@@ -2,31 +2,30 @@
 set -e
 set -x
 
-export GRADLE_OPTS=-Dorg.gradle.native=false
-export M2_HOME=${HOME}/.m2
-mkdir -p ${M2_HOME}
- 
-export M2_LOCAL_REPO="${ROOT_FOLDER}/.m2"
- 
-mkdir -p "${M2_LOCAL_REPO}/repository"
+export ROOT_FOLDER=$( pwd )
+export REPO=git-repo
 
-echo $M2_LOCAL_REPO
-echo $M2_HOME
+M2_HOME="${HOME}/.m2"
+M2_CACHE="${ROOT_FOLDER}/maven"
+GRADLE_HOME="${HOME}/.gradle"
+GRADLE_CACHE="${ROOT_FOLDER}/gradle"
 
-cat > ${M2_HOME}/settings.xml <<EOF
- 
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                          https://maven.apache.org/xsd/settings-1.0.0.xsd">
-      <localRepository>${M2_LOCAL_REPO}/repository</localRepository>
-</settings>
- 
-EOF
-cp ${M2_HOME}/settings.xml ${ROOT_FOLDER}/.m2
+echo "Generating symbolic links for caches"
+
+[[ -d "${M2_CACHE}" && ! -d "${M2_HOME}" ]] && ln -s "${M2_CACHE}" "${M2_HOME}"
+[[ -d "${GRADLE_CACHE}" && ! -d "${GRADLE_HOME}" ]] && ln -s "${GRADLE_CACHE}" "${GRADLE_HOME}"
+
+SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+${SCRIPTS_DIR}/generate-settings.sh
+
+[[ -f "${SCRIPTS_DIR}/functions.sh" ]] && source "${SCRIPTS_DIR}/functions.sh" || \
+    echo "No functions.sh found"
+
+
+cd ${ROOT_FOLDER}/${REPO}
+buildMaven "${PROJECT_TYPE}"
 
 version=`cat version/number`
-cd git-repo
-./mvnw install
 cp target/*.jar ../artifact-dir/${base_name}-${version}.jar
 ls ../artifact-dir
