@@ -9,7 +9,10 @@ mkdir -p ${M2_HOME}
 export M2_LOCAL_REPO="${ROOT_FOLDER}/.m2"
  
 mkdir -p "${M2_LOCAL_REPO}/repository"
- 
+
+echo $M2_LOCAL_REPO
+echo $M2_HOME
+
 cat > ${M2_HOME}/settings.xml <<EOF
  
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
@@ -21,5 +24,4 @@ cat > ${M2_HOME}/settings.xml <<EOF
  
 EOF
 cd git-repo
-./mvnw -v
-./mvnw test
+mvn test
