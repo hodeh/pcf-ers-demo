@@ -3,10 +3,10 @@ set -e
 set -x
 
 export GRADLE_OPTS=-Dorg.gradle.native=false
-M2_HOME=${HOME}/.m2
+export M2_HOME=${HOME}/.m2
 mkdir -p ${M2_HOME}
  
-M2_LOCAL_REPO="${ROOT_FOLDER}/.m2"
+export M2_LOCAL_REPO="${ROOT_FOLDER}/.m2"
  
 mkdir -p "${M2_LOCAL_REPO}/repository"
  
