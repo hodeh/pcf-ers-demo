@@ -8,13 +8,17 @@ image_resource:
     tag: "latest"
 
 
-caches:
-  - path: .gradle
-  - path: .m2
+inputs:
+  - name: git-repo
+  - name: version
 
 outputs:
   - name: artifact-dir
 
+caches:
+  - path: .gradle/
+  - path: .m2/
+  
 run:
   path: git-repo/ci/scripts/build-artifact.sh
 
