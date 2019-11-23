@@ -23,6 +23,8 @@ cat > ${M2_HOME}/settings.xml <<EOF
 </settings>
  
 EOF
+cp ${M2_HOME}/settings.xml ${ROOT_FOLDER}/.m2
+
 version=`cat version/number`
 cd git-repo
 ./mvnw install
