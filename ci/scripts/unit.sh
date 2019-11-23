@@ -24,4 +24,5 @@ cat > ${M2_HOME}/settings.xml <<EOF
  
 EOF
 cd git-repo
-mvn test
+./mvnw -v
+./mvnw test
