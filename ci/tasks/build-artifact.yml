@@ -8,10 +8,10 @@ image_resource:
     tag: "latest"
 
 
-inputs:
-  - name: git-repo
-  - name: version
-
+caches:
+  - path: .gradle
+  - path: .m2
+  
 outputs:
   - name: artifact-dir
 
