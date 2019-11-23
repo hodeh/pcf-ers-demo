@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 set -e
+set -x
+
 M2_HOME=${HOME}/.m2
 mkdir -p ${M2_HOME}
  

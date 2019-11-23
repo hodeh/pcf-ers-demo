@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+set -x
 
 export GRADLE_OPTS=-Dorg.gradle.native=false
 M2_HOME=${HOME}/.m2
