@@ -11,13 +11,10 @@ image_resource:
 caches:
   - path: .gradle
   - path: .m2
-  
+
 outputs:
   - name: artifact-dir
 
-caches:
-  - path: /.gradle/
-  - path: /.m2/
 run:
   path: git-repo/ci/scripts/build-artifact.sh
 
