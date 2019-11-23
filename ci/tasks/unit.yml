@@ -11,7 +11,7 @@ inputs:
   - name: git-repo
 
 caches:
-  - path: gradle
-  - path: maven
+  - path: .gradle
+  - path: .m2
 run:
   path: git-repo/ci/scripts/unit.sh
