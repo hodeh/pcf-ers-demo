@@ -10,8 +10,8 @@ image_resource:
 inputs:
   - name: git-repo
 caches:
-  - path: .gradle/
-  - path: .m2/
+  - path: /.gradle/
+  - path: /.m2/
 
 run:
   path: git-repo/ci/scripts/unit.sh

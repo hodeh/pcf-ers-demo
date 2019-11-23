@@ -2,13 +2,17 @@
 set -e
 set -x
 
-M2_HOME=${HOME}/.m2
+export GRADLE_OPTS=-Dorg.gradle.native=false
+export M2_HOME=${HOME}/.m2
 mkdir -p ${M2_HOME}
  
-M2_LOCAL_REPO="${ROOT_FOLDER}/.m2"
+export M2_LOCAL_REPO="${ROOT_FOLDER}/.m2"
  
 mkdir -p "${M2_LOCAL_REPO}/repository"
- 
+
+echo $M2_LOCAL_REPO
+echo $M2_HOME
+
 cat > ${M2_HOME}/settings.xml <<EOF
  
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
