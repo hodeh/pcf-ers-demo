@@ -2,63 +2,63 @@ resources:
 - name: git-repo
   type: git
   source:
-    uri: {{GIT_REPO}}
+    uri: ((GIT_REPO))
     branch: master
-    private_key: {{GIT_PRIVATE_KEY}}
+    private_key: ((GIT_PRIVATE_KEY))
 
 - name: deploy-test-app
   type: cf
   source:
-    api: {{CF_API}}
-    username: {{CF_USER}}
-    password: {{CF_PASS}}
-    organization: {{CF_TEST_ORG}}
-    space: {{CF_TEST_SPACE}}
+    api: ((CF_API))
+    username: ((CF_USER))
+    password: ((CF_PASS))
+    organization: ((CF_TEST_ORG))
+    space: ((CF_TEST_SPACE))
     skip_cert_check: true
 
 - name: deploy-uat-app
   type: cf
   source:
-    api: {{CF_API}}
-    username: {{CF_USER}}
-    password: {{CF_PASS}}
-    organization: {{CF_UAT_ORG}}
-    space: {{CF_UAT_SPACE}}
+    api: ((CF_API))
+    username: ((CF_USER))
+    password: ((CF_PASS))
+    organization: ((CF_UAT_ORG))
+    space: ((CF_UAT_SPACE))
     skip_cert_check: true
 
 - name: deploy-production-app
   type: cf
   source:
-    api: {{CF_API}}
-    username: {{CF_USER}}
-    password: {{CF_PASS}}
-    organization: {{CF_PROD_ORG}}
-    space: {{CF_PROD_SPACE}}
+    api: ((CF_API))
+    username: ((CF_USER))
+    password: ((CF_PASS))
+    organization: ((CF_PROD_ORG))
+    space: ((CF_PROD_SPACE))
     skip_cert_check: true
 
 - name: version
   type: semver
   source:
     driver: git
-    uri: {{GIT_REPO}}
+    uri: ((GIT_REPO))
     branch: version
     file: version
-    private_key: {{GIT_PRIVATE_KEY}}
+    private_key: ((GIT_PRIVATE_KEY))
     initial_version: 1.0.0
 
 - name: release-candidate
   type: github-release
   source:
-    owner: {{GIT_USER}}
-    repository: {{GIT_RELEASE_REPO}}
-    access_token: {{GIT_ACCESS_TOKEN}}
+    owner: ((GIT_USER))
+    repository: ((GIT_RELEASE_REPO))
+    access_token: ((GIT_ACCESS_TOKEN))
 
 - name: production-release
   type: github-release
   source:
-    owner: {{GIT_USER}}
-    repository: {{GIT_RELEASE_REPO}}
-    access_token: {{GIT_ACCESS_TOKEN}}
+    owner: ((GIT_USER))
+    repository: ((GIT_RELEASE_REPO))
+    access_token: ((GIT_ACCESS_TOKEN))
 
 
 
