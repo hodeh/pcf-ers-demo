@@ -22,10 +22,10 @@ ${SCRIPTS_DIR}/generate-settings.sh
 [[ -f "${SCRIPTS_DIR}/functions.sh" ]] && source "${SCRIPTS_DIR}/functions.sh" || \
     echo "No functions.sh found"
 
+version=`cat version/number`
 
 cd ${ROOT_FOLDER}/${REPO}
 buildMaven "${PROJECT_TYPE}"
 
-version=`cat version/number`
 cp target/*.jar ../artifact-dir/${base_name}-${version}.jar
 ls ../artifact-dir
