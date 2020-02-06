@@ -2,7 +2,7 @@
 [ ![Download](https://api.bintray.com/packages/mborges-pivotal/generic/pcf-ers-demo1/images/download.svg) ](https://bintray.com/mborges-pivotal/generic/pcf-ers-demo1/_latestVersion)
 
 # PCF Elastic Runtime Service (ERS) Base Demo
-Base application to demonstrate PCF ERS
+DEMO- Base application to demonstrate PCF ERS
 
 ## Credits and contributions
 As you all know, we often transform other work into our own. This is all based from Andrew Ripka's [cf-workshop-spring-boot github repo](https://github.com/pivotal-cf-workshop/cf-workshop-spring-boot) with some basic modifications.
